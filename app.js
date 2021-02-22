@@ -55,6 +55,7 @@ function init() {
     playerTurn = player1;
     round = 1;
     message.textContent = "It's X's turn";
+    winner = null;
 }
 
 function reset() {
@@ -65,13 +66,14 @@ function assignBox(e) {
     if (playerTurn === player1) {
         e.target.innerHTML = "<p>X</p>";
         p1Choices.push(e.target.id);
+        this.removeEventListener("click", arguments.callee);
         handlePlayerTurn();
     } else {
         e.target.innerHTML = "<p>O</p>";
         p2Choices.push(e.target.id);
+        this.removeEventListener("click", arguments.callee);
         handlePlayerTurn();
-    } console.log(p1Choices);
-    console.log(p2Choices);
+    } 
 } 
 
 function handlePlayerTurn() {
@@ -94,8 +96,10 @@ function checkWin() {
         for (i = 0; i < winningCombo.length; i++) {
             if (checkPlayer1(p1Choices, winningCombo[i]) === true) {
                 winner = player1;
+                renderWinner();
             } else if (checkPlayer2(p2Choices, winningCombo[i]) === true) {
                 winner = player2;
+                renderWinner();
             }
         }
     }
@@ -114,9 +118,9 @@ function checkPlayer2(p2Choices, winningComboRow) {
 } 
 
 function renderWinner() {
-    if (winner === "X") {
+    if (winner === player1) {
         message.textContent = "X is the winner!";
-    } else if (winner === "O") {
+    } else if (winner === player2) {
         message.textContent = "O is the winner!";
     } else if (winner === "Tie") {
         message.textContent = "It's a tie!";
@@ -126,4 +130,4 @@ function renderWinner() {
 // invoked functions
 
 init();
-renderWinner();
+
