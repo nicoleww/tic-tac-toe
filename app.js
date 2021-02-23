@@ -79,6 +79,7 @@ function assignBox(e) {
 function handlePlayerTurn() {
     if (round >= 9) {
         winner = "Tie";
+        renderWinner();
     } else if (round === 2 || round === 4 || round === 6 || round === 8) {
         playerTurn = player1;
         round ++;
