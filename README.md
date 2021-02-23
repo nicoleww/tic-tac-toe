@@ -13,7 +13,7 @@
 </ul>
 <h2>Getting Started</h2>
 <p>Click the link below to try out my game.</p>
-<a href="#">Play Tic-Tac-Toe</a>
+<a href="https://nicoleww.github.io/tic-tac-toe/">Play Tic-Tac-Toe</a>
 <h2>Next Steps</h2>
 <ul>
 <li>Make the game responsive</li>
